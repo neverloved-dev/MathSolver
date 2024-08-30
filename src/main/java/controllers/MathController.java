@@ -16,7 +16,7 @@ public class MathController {
     MathSolverService mathSolverService;
 
     @PostMapping("/api/solve")
-    public File solveMathproblem(){
+    public void solveMathproblem(){
 
 
 
