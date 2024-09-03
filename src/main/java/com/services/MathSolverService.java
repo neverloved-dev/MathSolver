@@ -4,8 +4,11 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Scanner;
 
 @Service
@@ -27,7 +30,16 @@ public class MathSolverService {
 
     }
 
-    private void writeSolutionToFile( @NotNull Integer solution, @NotNull String pathToFile){
+       public void writeSolutionToFile( @NotNull Integer solution, @NotNull String pathToFile) throws IOException{
+        try{
+            File fileObject = new File(pathToFile);
+            FileWriter fileWriter = new FileWriter(fileObject);
+            fileWriter.write(solution);
+        } catch(IOException e){
+            File fileObject = new File("solutions.txt");
+            FileWriter fileWriter = new FileWriter(fileObject);
+            fileWriter.write(solution);
+        }
 
     }
 
