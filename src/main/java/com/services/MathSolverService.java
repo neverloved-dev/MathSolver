@@ -14,7 +14,7 @@ import java.util.Stack;
 
 @Service
 public class MathSolverService {
-    private List<String> readStringFromFile(@NotNull String pathToFile){
+    public List<String> readStringFromFile(@NotNull String pathToFile) throws IOException{
         List<String> resuList = new ArrayList<String>();
         try {
             File fileObject = new File(pathToFile);
@@ -24,8 +24,12 @@ public class MathSolverService {
                 resuList.add(fileLIne);
             }
             
-        } catch (FileNotFoundException | NullPointerException e) {
+        } catch ( NullPointerException | IOException e) {
             // TODO: Handle the exceptions
+            File exceptionFile = new File("");
+            FileWriter fileWriter = new FileWriter("");
+            fileWriter.write(" ");
+            fileWriter.close();
         }
         return resuList;
 
@@ -37,9 +41,7 @@ public class MathSolverService {
             FileWriter fileWriter = new FileWriter(fileObject);
             fileWriter.write(solution);
         } catch(IOException e){
-            File fileObject = new File("solutions.txt");
-            FileWriter fileWriter = new FileWriter(fileObject);
-            fileWriter.write(solution);
+            throw e;
         }
 
     }
@@ -158,6 +160,13 @@ public class MathSolverService {
                         break;
                     case '^':
                         stack.push(Math.pow(a, b));
+                        break;
+
+                    case 's':
+                        stack.push(Math.sin(a));
+                        break;
+                    case 'c':
+                        stack.push(Math.sin(a));
                         break;
                 }
                 i++;
