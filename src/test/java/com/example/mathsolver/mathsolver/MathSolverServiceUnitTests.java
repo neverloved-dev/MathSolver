@@ -109,7 +109,7 @@ public class MathSolverServiceUnitTests {
     public void testComplexExpression() {
         String expression = "3+(2*2)-4/(1+1)";
         double result = MathSolverService.solveExpression(expression);
-        assertEquals(6.0, result, 0.0001);
+        assertEquals(5.0, result, 0.0001);
     }
 
     @Test

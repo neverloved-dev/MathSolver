@@ -23,7 +23,7 @@ public class MathSolverService {
                 String fileLIne = fileScannerObj.nextLine();
                 resuList.add(fileLIne);
             }
-            
+
         } catch ( NullPointerException | IOException e) {
             // TODO: Handle the exceptions
             File exceptionFile = new File("");
@@ -161,31 +161,17 @@ public class MathSolverService {
                     case '^':
                         stack.push(Math.pow(a, b));
                         break;
-
+                    // TODO: Add support for cos and sin by stripping the string for only s and c chars respectively
                     case 's':
                         stack.push(Math.sin(a));
                         break;
                     case 'c':
                         stack.push(Math.sin(a));
                         break;
+
+                        //TODO: If the symbols do not match, throw illegal argument exception and close the program
                 }
                 i++;
-            }
-            // If the character is a letter, it may be a function like sin or cos
-            else if (Character.isLetter(c)) {
-                StringBuilder func = new StringBuilder();
-                while (i < expression.length() && Character.isLetter(expression.charAt(i))) {
-                    func.append(expression.charAt(i++));
-                }
-                double a = stack.pop();
-                switch (func.toString()) {
-                    case "sin":
-                        stack.push(Math.sin(Math.toRadians(a)));
-                        break;
-                    case "cos":
-                        stack.push(Math.cos(Math.toRadians(a)));
-                        break;
-                }
             }
         }
 
